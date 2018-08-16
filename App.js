@@ -1,34 +1,101 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { createBottomTabNavigator } from 'react-navigation';
-export default class App extends React.Component {
+import { createBottomTabNavigator, createStackNavigator, createDrawerNavigator } from 'react-navigation';
+
+import { createStore, applyMiddleware } from 'redux';
+import { Provider, connect } from 'react-redux';
+import axios from 'axios';
+import axiosMiddleware from 'redux-axios-middleware';
+
+import reducer from './eventReducer';
+import EventList from './EventList';
+
+const client = axios.create({
+  baseURL: 'https://soccer.playsask.com',
+  responseType: 'json'
+});
+
+const store = createStore(reducer, applyMiddleware(axiosMiddleware(client)));
+
+class Matches extends Component {
   render() {
     return (
-      <Navigation />
-      // <View style={styles.container}>
-      //   <Text>Open up App.js to start working on your app!</Text>
-      //   <Text>Changes you make will automatically reload.</Text>
-      //   <Text>Shake your phone to open the developer menu.</Text>
-      // </View>
+      <Provider store={store}>
+        <View style={styles.container}>
+          <EventList />
+        </View>
+      </Provider>
     );
   }
 }
 
 
-const Home = (props) => <View>
-  {/* <Text>Home</Text>
-  <Text onPress={() => props.navigation.navigate('Page2')}>Go to page 2</Text> */}
-</View>
 
-const Page2 = (props) => <View>
-  {/* <Text>Page2</Text>
-  <Text onPress={() => props.navigation.navigate('Home')}>Go Home</Text> */}
-</View>
+
+
+
+
+
+
+
+export default class App extends React.Component {
+  render() {
+    return (
+      <Navigation />
+    );
+  }
+}
+
+class Announcements extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text>
+        These are the announcements
+        </Text>
+      </View>
+    );
+  }
+}
+
+class Standings extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text>
+        These are the standings
+        </Text>
+      </View>
+    );
+  }
+}
+
+
+class Schedule extends React.Component {
+  static navigationOptions = {
+  };
+  render () {
+    return (
+    <View style={styles.container}>
+      <Text>These are the schedules</Text>
+      <Matches></Matches>
+      {/* <Text>Huh</Text><Text onPress={() => props.navigation.navigate('Soccer')}>Go to Soccer</Text> */}
+    </View>
+    )
+    }
+} 
 
 const Navigation = createBottomTabNavigator({
-  Home: { screen: Home },
-  Page2: { screen: Page2 }
-})
+  Announcements: () => (<Announcements></Announcements>),
+  Schedule: () => (<Schedule></Schedule>),
+  Standings: () => (<Standings></Standings>)
+});
 
 const styles = StyleSheet.create({
   container: {
@@ -36,5 +103,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
+    marginTop: 50
+  }
 });
