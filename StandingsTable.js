@@ -3,26 +3,26 @@ import React, { Component } from 'react';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 
-import { listEvents } from './eventReducer';
+import { listStandings } from './standingsReducer';
 
-class EventList extends Component {
+class StandingsTable extends Component {
   componentDidMount() {
-    this.props.listEvents();
+    this.props.listStandings();
   }
   renderItem = ({ item }) => (
     <View style={styles.item}>
-      <Text style={{fontSize: 14}}>{item.title.rendered}</Text>
-      <Text style={{fontSize: 10}}>Date: {item.date}</Text>
+      <Text>{item.title.rendered}</Text>
     </View>
   );
   render() {
-    const { events } = this.props;
+    const { s } = this.props;
     return (
-      <FlatList
+      <View
         styles={styles.container}
-        data={events}
+        data={s}
         renderItem={this.renderItem}
-      />
+      >
+      </View>
     );
   }
 }
@@ -41,14 +41,14 @@ const styles = StyleSheet.create({
 const mapStateToProps = state => {
   console.log(state);
   
-  let storedEvents = state.events.map(event => ({ key: '' + event.id, ...event }));
+  let storedEvents = state.s.map(table => ({ key: '' + table.id, ...table }));
   return {
-    events: storedEvents
+    s: storedEvents
   };
 };
 
 const mapDispatchToProps = {
-  listEvents
+  listStandings
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(EventList);
+export default connect(mapStateToProps, mapDispatchToProps)(StandingsTable);

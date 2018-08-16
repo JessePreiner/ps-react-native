@@ -29,15 +29,6 @@ class Matches extends Component {
   }
 }
 
-
-
-
-
-
-
-
-
-
 export default class App extends React.Component {
   render() {
     return (
@@ -83,7 +74,7 @@ class Schedule extends React.Component {
   render () {
     return (
     <View style={styles.container}>
-      <Text>These are the schedules</Text>
+      <Text syle={styles.header}>Matches</Text>
       <Matches></Matches>
       {/* <Text>Huh</Text><Text onPress={() => props.navigation.navigate('Soccer')}>Go to Soccer</Text> */}
     </View>
@@ -104,5 +95,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 50
+  },
+  header: {
+    fontSize:16,
+    fontWeight: 'bold'
   }
 });
