@@ -2,6 +2,8 @@
 import React, { Component } from 'react';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
+import { Card } from 'react-native-elements';
+import Moment from 'moment';
 
 import { listEvents } from './eventReducer';
 
@@ -10,11 +12,18 @@ class EventList extends Component {
     this.props.listEvents();
   }
   renderItem = ({ item }) => (
+  
     <View style={styles.item}>
-      <Text style={{fontSize: 14}}>{item.title.rendered}</Text>
-      <Text style={{fontSize: 10}}>Date: {item.date}</Text>
+      <Card style={{fontSize: 14}} title={item.title.rendered}>
+        <Text style={{fontSize: 12, textAlign:'center'}}>{this.getNiceDate(item.date)}</Text>
+      </Card>    
     </View>
   );
+  
+  getNiceDate(date) {
+    return Moment(date).format('MMM d, YYYY @ h:mmA');
+  }
+  
   render() {
     const { events } = this.props;
     return (

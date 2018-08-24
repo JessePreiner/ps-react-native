@@ -10,7 +10,6 @@ import { WebView } from 'react-native-gesture-handler';
 class Details extends Component {
   
   render() {
-    console.log('holy fuck we\'re rendering!');
     return (<WebView source={{uri: this.props.uri}} 
       style={{marginTop:20}}></WebView>);
   }
@@ -21,24 +20,25 @@ class AnnouncementList extends Component {
   componentDidMount() {
     this.props.listAnnouncements();
   }
+  
   renderItem = ({ item }) => {
   return 
-  this.state.showDetails 
-  ? <Details uri={item.guid.rendered}></Details>
-  :
-    <View style={styles.item}>
-      <Card style={{fontSize: 14}} title={item.title.rendered}>
-        <Text
-          onPress={() => {
-            console.log(this.state);
-            this.setState({showDetails: true, source: item.guid.rendered});
-            console.log(this.state);
+    this.state.showDetails
+    ? <Details uri={item.guid.rendered}></Details>
+    :
+      <View style={styles.item}>
+        <Card style={{fontSize: 14}} title={item.title.rendered}>
+          <Text
+            onPress={() => {
+              console.log(this.state);
+              this.setState({showDetails: true, source: item.guid.rendered});
+              console.log(this.state);
 
-          }}
-          style={{fontSize: 12, textAlign:'center'}}>
-        {this.getNiceDate(item.date)}</Text>
-      </Card>
-    </View>
+            }}
+            style={{fontSize: 12, textAlign:'center'}}>
+          {this.getNiceDate(item.date)}</Text>
+        </Card>
+      </View>
   };
 
   getNiceDate(date) {

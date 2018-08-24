@@ -9,19 +9,12 @@ class StandingsTable extends Component {
   componentDidMount() {
     this.props.listStandings();
   }
-  renderItem = ({ item }) => (
-    <View style={styles.item}>
-      <Text>{item.title.rendered}</Text>
-    </View>
-  );
+  
   render() {
-    const { s } = this.props;
+    const { standings } = this.props;
     return (
-      <View
-        styles={styles.container}
-        data={s}
-        renderItem={this.renderItem}
-      >
+      <View style={styles.container}>   
+        <Text>{JSON.stringify(standings) }</Text>
       </View>
     );
   }
@@ -30,20 +23,13 @@ class StandingsTable extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1
-  },
-  item: {
-    padding: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc'
   }
 });
 
 const mapStateToProps = state => {
-  console.log(state);
-  
-  let storedEvents = state.s.map(table => ({ key: '' + table.id, ...table }));
+  console.log('ssstate',state);
   return {
-    s: storedEvents
+    standings: state
   };
 };
 
