@@ -1,0 +1,26 @@
+{
+  "name": "psapp2",
+  "version": "0.0.0",
+  "description": "No description",
+  "author": null,
+  "private": true,
+  "main": "node_modules/expo/AppEntry.js",
+  "dependencies": {
+    "axios": "0.18.0",
+    "browserify-css": "0.12.0",
+    "expo": "^29.0.0",
+    "moment": "2.22.2",
+    "react": "16.3.1",
+    "react-ionicons": "2.1.6",
+    "react-json-table": "0.1.1",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-29.0.0.tar.gz",
+    "react-native-elements": "0.19.1",
+    "react-native-table-component": "^1.1.8",
+    "react-native-vector-icons": "^5.0.0",
+    "react-navigation": "~2",
+    "react-redux": "5.0.7",
+    "react-table": "^6.8.6",
+    "redux": "^4.0.0-0",
+    "redux-axios-middleware": "4.0.0"
+  }
+}
