@@ -12,7 +12,7 @@ class StandingsTable extends Component {
 
   render() {
     let { standings } = this.props;
-    let columnWidths = [200,20,20,20,30,25];
+    let columnWidths = [200,20,20,20,30,30];
     return (
       standings && standings.length ?
       
@@ -20,12 +20,12 @@ class StandingsTable extends Component {
       <ScrollView horizontal={true}>
         <View> 
           <Table borderStyle={{borderColor: '#C1C0B9'}}>
-            <Row data={["Team", "Wins", "Losses", "Draws", "Goal Diff",  "Position"]} widthArr={columnWidths} textStyle={styles.text}/>
+            <Row data={["Team", "W", "L", "D", "GD",  "Pos"]} widthArr={columnWidths} textStyle={styles.text}/>
           </Table>
           <ScrollView style={styles.dataWrapper}>
             <Table borderStyle={{borderColor: '#C1C0B9'}}>
               {
-                standings.map((rowData, index) => (
+                standings.slice(1).map((rowData, index) => (
                   <Row
                     key={index}
                     data={rowData.slice(1)}
