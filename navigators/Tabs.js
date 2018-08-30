@@ -1,7 +1,6 @@
 import { createBottomTabNavigator } from 'react-navigation';
 import { Ionicons } from '@expo/vector-icons';
-import Icon from '@expo/vector-icons/MaterialIcons';
-import React, { Component } from 'react';
+import React from 'react';
 import Announcements from '../components/Announcements';
 import Schedule from '../components/Schedule';
 import Standings from '../components/Standings';

@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-import { createDrawerNavigator, createStackNavigator, createSwitchNavigator } from "react-navigation";
+import { createSwitchNavigator } from "react-navigation";
 import Tabs from "./Tabs";
 import HomeScreen from '../screens/HomeScreen';
 
