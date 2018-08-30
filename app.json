@@ -1,12 +1,11 @@
 {
   "expo": {
     "name": "Play Sask",
-    "description": "Play Sask",
+    "description": "Play Sask's official app for checking standings, upcoming schedules, and getting announcements related to Play Sask's events.",
     "slug": "snack-rke0_Jrwm",
     "privacy": "unlisted",
     "sdkVersion": "29.0.0",
     "version": "1.0.0",
-    "orientation": "portrait",
     "primaryColor": "#cccccc",
     "icon": "./assets/logo-icon-blue.png",
     "loading": {
@@ -26,8 +25,7 @@
       "bundleIdentifier": "com.playsask.playsask"
     },
     "android": {
-      "package": "com.playsask.playsask",
-      "supportsTablet": true
+      "package": "com.playsask.playsask"
     }
   }
 }

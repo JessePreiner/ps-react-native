@@ -8,8 +8,6 @@ import Standings from '../components/Standings';
 
 class Tabs extends React.Component {
   static navigationOptions = {
-    drawerLabel: 'labelabelabel',
-    title: "noodle"
   };
   constructor(props) {
     super(props);

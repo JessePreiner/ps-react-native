@@ -1,20 +1,21 @@
-import { Button } from 'react-native-elements';
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, ImageBackground } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ImageBackground, Dimensions, ReactPropTypes } from 'react-native';
 import { Tabs } from '../navigators/Tabs';
 
 class HomeScreen extends React.Component {
+
   static navigationOptions = {
-    drawerLabel: 'League',
   };
   constructor(props) {
     super(props);
+  }
+  componentDidMount() {
   }
 
   render() {
     return (
       <View style={styles.container}>
-          <Text>Choose a league</Text>
+          <Text style={styles.header}>What's your thrill?</Text>
           <View style={styles.container}>
             <TouchableOpacity 
               style={styles.card} 
@@ -22,21 +23,19 @@ class HomeScreen extends React.Component {
                 this.props.navigation.navigate('Tabs', { sport: 'soccer' });
               }}>
               <ImageBackground resizeMode="cover" style={styles.backgroundImage}  source={require('../assets/card-images/soccer-drone-1000x500.jpg')}>
-                <Text>Soccer</Text>
+                <Text style={styles.imageText}>Soccer</Text>
               </ImageBackground>
             </TouchableOpacity>
           </View>
-          <View style={styles.container}>          
             <TouchableOpacity 
               style={styles.card} 
               onPress={() => {
                 this.props.navigation.navigate('Tabs', { sport: 'dodgeball' });
               }}>
-              <ImageBackground  resizeMode="cover" style={styles.backgroundImage}  source={require('../assets/card-images/fp-second-1000x500.jpg')}>
-                <Text>Dodgeball</Text>
-              </ImageBackground>          
+              <ImageBackground  resizeMode="cover" style={styles.backgroundImage} source={require('../assets/card-images/fp-second-1000x500.jpg')}>
+                <Text style={styles.imageText}>Dodgeball</Text>
+              </ImageBackground>
             </TouchableOpacity>
-          </View>
       </View>
     );
   }
@@ -53,10 +52,24 @@ const styles = StyleSheet.create({
   card: {
     flex: 1
   },
-  backgroundImage: {
-    width: '100%',
-    height: '100%'
-  }
+  imageText: {
+      color: 'white',
+      fontSize: 26,
+      fontWeight: 'bold',
+      textAlign: 'center',
+      textShadowColor: 'black',
+      textShadowOffset: {
+          width: 2,
+          height: 2
+      },
+      marginTop: '10%',
+      textShadowRadius: 10
+  },
+  backgroundImage: { flex:1, width: Dimensions.get('window').width, height: 300 },
+  header: {
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
 });
 
 export default HomeScreen;
