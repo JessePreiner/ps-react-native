@@ -1,6 +1,6 @@
 import { Button } from 'react-native-elements';
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ImageBackground } from 'react-native';
 import { Tabs } from '../navigators/Tabs';
 
 class HomeScreen extends React.Component {
@@ -14,25 +14,29 @@ class HomeScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={{flex:1, flexDirection: 'row', justifyContent: 'space-around', alignItems: 'stretch'}}>
-        
-        <Button
-          buttonStyle={styles.button}
-          textStyle={{ color: 'white' }}
-          title="Soccer"
-          onPress={() => {
-            this.props.navigation.navigate('Tabs', { sport: 'soccer' });
-          }}
-        />
-        <Button
-          buttonStyle={styles.button}
-          textStyle={{ color: 'white' }}
-          title="Dodgeball"
-          onPress={() => {
-            this.props.navigation.navigate('Tabs', { sport: 'dodgeball' });
-          }}
-        />
-        </View>
+          <Text>Choose a league</Text>
+          <View style={styles.container}>
+            <TouchableOpacity 
+              style={styles.card} 
+              onPress={() => {
+                this.props.navigation.navigate('Tabs', { sport: 'soccer' });
+              }}>
+              <ImageBackground resizeMode="cover" style={styles.backgroundImage}  source={require('../assets/card-images/soccer-drone-1000x500.jpg')}>
+                <Text>Soccer</Text>
+              </ImageBackground>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.container}>          
+            <TouchableOpacity 
+              style={styles.card} 
+              onPress={() => {
+                this.props.navigation.navigate('Tabs', { sport: 'dodgeball' });
+              }}>
+              <ImageBackground  resizeMode="cover" style={styles.backgroundImage}  source={require('../assets/card-images/fp-second-1000x500.jpg')}>
+                <Text>Dodgeball</Text>
+              </ImageBackground>          
+            </TouchableOpacity>
+          </View>
       </View>
     );
   }
@@ -46,10 +50,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: 50,
   },
-  button: {
-    margin: 5,
-    backgroundColor: '#4c9dec',
+  card: {
+    flex: 1
   },
+  backgroundImage: {
+    width: '100%',
+    height: '100%'
+  }
 });
 
 export default HomeScreen;
