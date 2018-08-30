@@ -1,30 +1,60 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-import { Card } from 'react-native-elements';
-import Moment from 'moment';
+import React, { Component } from 'react';
+import { View, Text, FlatList, StyleSheet, Linking } from 'react-native';
+import { connect } from 'react-redux';
+import { Constants, WebBrowser } from 'expo';
+
+
+import { NewsItem } from './NewsItem';
+import { listEvents } from '../reducers/eventReducer';
+
+class EventList extends Component {
+  componentDidMount() {
+    this.props.listEvents();
+  }
+  
+  handleLinkClick = (link) => {
+    Linking.openURL(link).catch(console.error);
+  }
+  
+  renderItem = (item) => {
+    return (
+        <NewsItem press={() => this.handleLinkClick(item.item.link)} date={item.item.date} title={item.item.title.rendered} />
+    )
+  }
+  
+  
+  render() {
+    const { events, loading } = this.props;
+    return loading ? (
+      <Text>Loading...</Text>
+    ) : (
+      <FlatList
+        styles={styles.container}
+        data={events}
+        renderItem={this.renderItem}
+      />
+    );
+  }
+}
 
 const styles = StyleSheet.create({
-  item: {
-    padding: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc'
+  container: {
+    flex: 1
   }
 });
 
-export const NewsItem = (props) => {
-  let {date, title, press} = props;
-
-  function getNiceDate(date) {
-    return Moment(date).format('MMM D, YYYY @ h:mmA');
-  }
+const mapStateToProps = state => {
   
-  return (
-    <TouchableOpacity onPress={press}>
-        <Card style={styles.item} title={title}>
-          <Text style={{fontSize: 12, textAlign:'center'}}>{getNiceDate(date)}</Text>
-        </Card>
-    </TouchableOpacity>
-  );
-}
+  let storedEvents = state.events.map(event => ({ key: '' + event.id, ...event }));
+  return {
+    events: storedEvents,
+    loading: state.loading
+  };
+};
 
+const mapDispatchToProps = {
+  listEvents
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(EventList);

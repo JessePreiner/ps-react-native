@@ -1,8 +1,8 @@
 {
   "expo": {
     "name": "Play Sask",
-    "description": "Get the latest standings, schedule, and announcements from Play Sask",
-    "slug": "snack-H1woIgJDm",
+    "description": "Play Sask",
+    "slug": "snack-rke0_Jrwm",
     "privacy": "unlisted",
     "sdkVersion": "29.0.0",
     "version": "1.0.0",
@@ -26,7 +26,8 @@
       "bundleIdentifier": "com.playsask.playsask"
     },
     "android": {
-      "package": "com.playsask.playsask"
+      "package": "com.playsask.playsask",
+      "supportsTablet": true
     }
   }
 }

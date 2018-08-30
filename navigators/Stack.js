@@ -1,21 +1,17 @@
 import React, { Component } from 'react';
 
-import { createDrawerNavigator, createStackNavigator } from "react-navigation";
+import { createDrawerNavigator, createStackNavigator, createSwitchNavigator } from "react-navigation";
 import Tabs from "./Tabs";
 import HomeScreen from '../screens/HomeScreen';
 
-const Navigation = createStackNavigator(
+const Navigation = createSwitchNavigator(
   {
-    Main: { screen: HomeScreen, title: "League" },
+    Main: { screen: HomeScreen},
     Tabs: ({navigation})=> (<Tabs screenProps={navigation.state.params}/>)
   },
   {
-    navigationOptions: ({ navigation }) => ({
-    }),
-      headerTitleStyle: {
-        color: "white"
-      }
-    }
+    backBehavior: "initialRoute"
+  }
 );
 
 export default Navigation;
