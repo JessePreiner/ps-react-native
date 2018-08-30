@@ -46,7 +46,7 @@ export function listStandings() {
     type: GET_STANDINGS,
     payload: {
       request: {
-        url: `https://soccer.playsask.com/wp-json/sportspress/v2/tables`
+        url: `/wp-json/sportspress/v2/tables`
       }
     }
   };

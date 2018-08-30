@@ -1,25 +1,21 @@
 import React, { Component } from 'react';
 
-import { createSwitchNavigator, createDrawerNavigator } from "react-navigation";
-import Navigation2 from "./Tabs";
+import { createDrawerNavigator, createStackNavigator } from "react-navigation";
+import Tabs from "./Tabs";
 import HomeScreen from '../screens/HomeScreen';
 
-const Navigation = createDrawerNavigator(
+const Navigation = createStackNavigator(
   {
-    Main: { screen: HomeScreen },
-    Tabs: { screen: Navigation2 }
+    Main: { screen: HomeScreen, title: "League" },
+    Tabs: ({navigation})=> (<Tabs screenProps={navigation.state.params}/>)
   },
   {
-    navigationOptions: {
-      title: "Choose a sport",
-      headerStyle: {
-        backgroundColor: "#4c9dec"
-      },
+    navigationOptions: ({ navigation }) => ({
+    }),
       headerTitleStyle: {
         color: "white"
       }
     }
-  }
 );
 
 export default Navigation;

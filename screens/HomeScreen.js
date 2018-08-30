@@ -5,13 +5,13 @@ import { Tabs } from '../navigators/Tabs';
 
 const HomeScreen = props => {
     return (
-      <View style={{ marginTop: 10 }}>
+      <View styles={styles.container}>
         <Button
           buttonStyle={styles.button}
           textStyle={{ color: "white" }}
           title="Soccer"
           onPress={() => {
-            props.navigation.navigate("Tabs");
+            props.navigation.navigate("Tabs", {sport: "soccer"});
           }}
         />
         <Button
@@ -19,7 +19,7 @@ const HomeScreen = props => {
           textStyle={{ color: "white" }}
           title="Dodgeball"
           onPress={() => {
-            props.navigation.navigate("Tabs");
+            props.navigation.navigate("Tabs", {sport: "dodgeball"});
           }}
         />
       </View>
@@ -33,10 +33,6 @@ const HomeScreen = props => {
       alignItems: 'center',
       justifyContent: 'center',
       marginTop: 50,
-    },
-    header: {
-      fontSize: 16,
-      fontWeight: 'bold',
     },
     button: {
       margin: 5,

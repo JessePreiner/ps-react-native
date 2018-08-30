@@ -7,21 +7,23 @@ import axios from 'axios';
 import axiosMiddleware from 'redux-axios-middleware';
 import { createStore, applyMiddleware } from 'redux';
 
-const client = axios.create({
-    responseType: 'json',
-  });
-
-const eventStore = createStore(
-    eventReducer,
-    applyMiddleware(axiosMiddleware(client))
-  );
-
 class Schedule extends React.Component {
-    static navigationOptions = {};
+    
     render() {
+      const {sport} = this.props.screenProps;
+
+      const client = axios.create({
+          responseType: 'json',
+          baseURL: `https://${sport}.playsask.com`    
+        });
+
+      const eventStore = createStore(
+          eventReducer,
+          applyMiddleware(axiosMiddleware(client))
+        );
       return (
         <View style={styles.container}>
-          <Text style={styles.header}>Soccer Schedule</Text>
+          <Text style={styles.header}>{sport} Schedule</Text>
           <Provider store={eventStore}>
             <EventList />
           </Provider>

@@ -6,11 +6,17 @@ import Announcements from '../components/Announcements';
 import Schedule from '../components/Schedule';
 import Standings from '../components/Standings';
 
-const Navigation2 = createBottomTabNavigator(
+const Tabs = createBottomTabNavigator(
   {
-    Announcements: () => <Announcements />,
-    Schedule: () => <Schedule />,
-    Standings: () => <Standings />
+    Announcements: {
+      screen: Announcements,
+    },
+    Schedule: {
+      screen: Schedule
+    },
+    Standings: {
+      screen: Standings
+    }
   },
   {
     navigationOptions: ({ navigation }) => ({
@@ -37,4 +43,4 @@ const Navigation2 = createBottomTabNavigator(
   }
 );
 
-export default Navigation2;
+export default Tabs;

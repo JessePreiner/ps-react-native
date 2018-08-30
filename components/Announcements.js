@@ -21,9 +21,10 @@ class Announcements extends React.Component {
       super(props);
     }
     render() {
+      const {sport} = this.props.screenProps;
       return (
         <View style={styles.container}>
-          <Text style={styles.header}>Play Sask Announcements</Text>
+          <Text style={styles.header}>Announcements for {sport}</Text>
           <Provider store={announcementsStore}>
             <AnnouncementList />
           </Provider>

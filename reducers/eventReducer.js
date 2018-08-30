@@ -24,7 +24,7 @@ export function listEvents() {
     type: GET_EVENTS,
     payload: {
       request: {
-        url: `https://soccer.playsask.com/wp-json/sportspress/v2/events`
+        url: `/wp-json/sportspress/v2/events`
       }
     }
   };
