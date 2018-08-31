@@ -4,6 +4,7 @@ import React from 'react';
 import Announcements from '../components/Announcements';
 import Schedule from '../components/Schedule';
 import Standings from '../components/Standings';
+import ContactForm from '../components/Contact';
 
 class Tabs extends React.Component {
   static navigationOptions = {
@@ -24,6 +25,9 @@ class Tabs extends React.Component {
         Standings: {
           screen: Standings,
         },
+        Contact: {
+          screen: ContactForm,
+        },
       },
       {
         navigationOptions: ({ navigation }) => ({
@@ -36,6 +40,8 @@ class Tabs extends React.Component {
               iconName = `ios-clock${focused ? '' : '-outline'}`;
             } else if (routeName === 'Standings') {
               iconName = `ios-podium${focused ? '' : '-outline'}`;
+            } else if (routeName === 'Contact') {
+              iconName = `ios-mail${focused ? '' : '-outline'}`;
             }
             return <Ionicons name={iconName} size={25} color={tintColor} />;
           },
