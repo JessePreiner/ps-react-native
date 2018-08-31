@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Provider } from 'react-redux';
 import announcementReducer from '../reducers/announcementReducer';
@@ -21,10 +21,10 @@ class Announcements extends React.Component {
       super(props);
     }
     render() {
-      const {sport} = this.props.screenProps;
+
       return (
         <View style={styles.container}>
-          <Text style={styles.header}>Announcements for {sport}</Text>
+          <Text style={styles.header}>Play Sask Announcements</Text>
           <Provider store={announcementsStore}>
             <AnnouncementList />
           </Provider>

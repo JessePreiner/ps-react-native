@@ -10,11 +10,11 @@ import { createStore, applyMiddleware } from 'redux';
 class Schedule extends React.Component {
     
     render() {
-      const {sport} = this.props.screenProps;
+      const {sport, name} = this.props.screenProps;
 
       const client = axios.create({
           responseType: 'json',
-          baseURL: `https://${sport}.playsask.com`    
+          baseURL: `https://${sport}.playsask.com`
         });
 
       const eventStore = createStore(
@@ -23,7 +23,7 @@ class Schedule extends React.Component {
         );
       return (
         <View style={styles.container}>
-          <Text style={styles.header}>{sport} Schedule</Text>
+          <Text style={styles.header}>{name} Schedule</Text>
           <Provider store={eventStore}>
             <EventList />
           </Provider>

@@ -20,7 +20,7 @@ class HomeScreen extends React.Component {
             <TouchableOpacity 
               style={styles.card} 
               onPress={() => {
-                this.props.navigation.navigate('Tabs', { sport: 'soccer' });
+                this.props.navigation.navigate('Tabs', { sport: 'soccer', name: "Soccer" });
               }}>
               <ImageBackground resizeMode="cover" style={styles.backgroundImage}  source={require('../assets/card-images/soccer-drone-1000x500.jpg')}>
                 <Text style={styles.imageText}>Soccer</Text>
@@ -30,7 +30,7 @@ class HomeScreen extends React.Component {
             <TouchableOpacity 
               style={styles.card} 
               onPress={() => {
-                this.props.navigation.navigate('Tabs', { sport: 'dodgeball' });
+                this.props.navigation.navigate('Tabs', { sport: 'dodgeball', name: "Dodgeball" });
               }}>
               <ImageBackground  resizeMode="cover" style={styles.backgroundImage} source={require('../assets/card-images/fp-second-1000x500.jpg')}>
                 <Text style={styles.imageText}>Dodgeball</Text>

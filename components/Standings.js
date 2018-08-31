@@ -12,7 +12,7 @@ class Standings extends React.Component {
     super(props);
   }
   render() {
-    const { sport } = this.props.screenProps;
+    const { sport, name } = this.props.screenProps;
     const client = axios.create({
       responseType: 'json',
       baseURL: `https://${sport}.playsask.com`,
@@ -25,7 +25,7 @@ class Standings extends React.Component {
 
     return (
       <View style={styles.container}>
-        <Text style={styles.header}>{sport} Standings</Text>
+        <Text style={styles.header}>{name} Standings</Text>
         <Provider store={standingsStore}>
           <StandingsTable />
         </Provider>
