@@ -11,10 +11,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: 10,
-    fontFamily: Platform.OS === "ios" ? 'HelveticaNeue' : 'sans-serif',
-    backgroundColor: '#ecf0f1'
+    backgroundColor: '#fff'
   }});
-
 
 class ContactForm extends React.Component {
   
@@ -38,16 +36,16 @@ class ContactForm extends React.Component {
         <View style={{flex: 1, marginTop: 50}}>
           <LogoSpinner width={150} height={150} />
         </View>
-        <View style={{flex: 2}}>
+        <View style={{flex: 3}}>
           <Card title="Contact us">
-            <FormLabel>You</FormLabel>
+            <FormLabel labelStyle={{fontFamily: Platform.OS === "ios" ? 'HelveticaNeue' : 'sans-serif'}}>You</FormLabel>
             <FormInput onChangeText={(val) => this.setState({'name': val})} placeholder="Joe Smith" value={this.name} />
 
-            <FormLabel>Your email address</FormLabel>
+            <FormLabel labelStyle={{fontFamily: Platform.OS === "ios" ? 'HelveticaNeue' : 'sans-serif'}}>Your email address</FormLabel>
             <FormInput onChangeText={(val) => this.setState({'email': val})} placeholder="s.w.hawking@damtp.cam.ac.uk" value={this.email} />
 
-            <FormLabel>What's up?</FormLabel>
-            <FormInput onChangeText={(val) => this.setState({'messageContent': val})} placeholder="Hi! You should should..." value={this.messageContent} />
+            <FormLabel labelStyle={{fontFamily: Platform.OS === "ios" ? 'HelveticaNeue' : 'sans-serif'}}>What's up?</FormLabel>
+            <FormInput multiline onChangeText={(val) => this.setState({'messageContent': val})} placeholder="Hi! You should should..." value={this.messageContent} />
 
             <FormValidationMessage>{this.state.errorMessage}</FormValidationMessage>
 
