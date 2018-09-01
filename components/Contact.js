@@ -50,7 +50,7 @@ class ContactForm extends React.Component {
 
               <FormValidationMessage>{this.state.errorMessage}</FormValidationMessage>
 
-              <Button title="Send" accessibilityLabel="Send your feedback to playsask">Send</Button>
+              <Button raised backgroundColor="#4c9dec" title="Send" accessibilityLabel="Send your feedback to playsask">Send</Button>
             </Card>
           </KeyboardAvoidingView>
       </View>

@@ -51,7 +51,7 @@ class Tabs extends React.Component {
             backgroundColor: '#fff',
           },
           activeTintColor: '#4c9dec',
-          inactiveTintColor: '#4c9dec',
+          inactiveTintColor: '#5c1dfc',
         },
       }
     );
